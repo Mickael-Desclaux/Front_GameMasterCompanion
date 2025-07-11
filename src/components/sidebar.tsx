@@ -10,7 +10,7 @@ export default function Sidebar() {
     }
 
     return (
-        <Card className="h-[100vh] w-full flex flex-col max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+        <Card className="h-[100vh] w-full flex flex-col max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 transition-all duration-300 ease-in-out">
             <div className="flex justify-end w-full">
                 <img src="/close.svg" alt="Close menu" className="w-6 h-6" onClick={() => setIsOpen(false)} />
             </div>

@@ -1,17 +1,22 @@
 import type {PlayerSummary} from "@/types/characters.ts";
 import PlayerStatus from "@/components/playerStatus.tsx";
+import type {LastCampaign} from "@/types/campaigns.ts";
+import type { LastChapter } from "@/types/chapters";
 
 export default function CampaignResume() {
 
-    const lastCampaignTitle: string = "Descente en Avernes";
-    const lastChapter = {
+    const lastCampaign: LastCampaign = {
+        id: 1,
+        title: "Descente en Avernes",
+    };
+    const lastChapter: LastChapter = {
+        id: 1,
         title: "Le Culte des Trois Morts",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas posuere metus quis erat lacinia, " +
             "ut dictum mi euismod. Nam justo arcu, pharetra at nibh eu, porta viverra dolor. Nunc velit neque, varius id eros " +
             "eu, sagittis posuere augue. Maecenas euismod quis arcu vitae tincidunt. Nunc placerat fermentum odio vitae " +
             "dictum. Quisque fringilla est non tortor faucibus rhoncus. Aliquam in ullamcorper nulla. In ut mauris vel " +
             "urna ultrices ultrices.",
-        link: "test-chapter",
     };
     const charactersData: PlayerSummary[] = [
         {
@@ -68,7 +73,7 @@ export default function CampaignResume() {
     return (
         <>
             <div className="text-center">
-                <h3 className="text-2xl font-bold mb-2 -mt-2">{lastCampaignTitle}</h3>
+                <h3 className="text-2xl font-bold mb-2 -mt-2">{lastCampaign.title}</h3>
                 <p className="text-xl underline mb-2">{lastChapter.title}</p>
                 <p className="text-sm text-balance mt-4 mb-4">{reduceDescription(lastChapter.description)}</p>
             </div>

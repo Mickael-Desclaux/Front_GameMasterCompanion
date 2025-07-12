@@ -2,6 +2,7 @@ import type {PlayerSummary} from "@/types/characters.ts";
 import PlayerStatus from "@/components/playerStatus.tsx";
 import type {LastCampaign} from "@/types/campaigns.ts";
 import type { LastChapter } from "@/types/chapters";
+import {NavLink} from "react-router-dom";
 
 export default function CampaignResume() {
 
@@ -73,8 +74,12 @@ export default function CampaignResume() {
     return (
         <>
             <div className="text-center">
-                <h3 className="text-2xl font-bold mb-2 -mt-2">{lastCampaign.title}</h3>
-                <p className="text-xl underline mb-2">{lastChapter.title}</p>
+                <NavLink to={`/campaign/${lastCampaign.id}`}>
+                    <h3 className="text-2xl font-bold mb-2 -mt-2">{lastCampaign.title}</h3>
+                </NavLink>
+                <NavLink to={`/chapter/${lastChapter.id}`}>
+                    <h4 className="text-xl underline mb-2">{lastChapter.title}</h4>
+                </NavLink>
                 <p className="text-sm text-balance mt-4 mb-4">{reduceDescription(lastChapter.description)}</p>
             </div>
             <div className="grid grid-cols-2">

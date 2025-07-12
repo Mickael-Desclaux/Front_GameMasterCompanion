@@ -1,4 +1,5 @@
 import CampaignResume from "@/components/campaignResume.tsx";
+import CharacterResume from "@/components/characterResume.tsx";
 
 export default function Home() {
 
@@ -9,7 +10,7 @@ export default function Home() {
                     <CampaignResume />
                 </div>
                 <div className="w-1/2 m-2">
-                    Dernier personnage consulté
+                    <CharacterResume />
                 </div>
             </div>
             <div className="flex flex-row w-full h-full">

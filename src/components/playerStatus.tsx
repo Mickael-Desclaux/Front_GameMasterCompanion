@@ -1,6 +1,7 @@
 import {NavLink} from "react-router-dom";
 
 type PlayerStatusProps = {
+    playerId: number;
     playerName: string;
     playerClass: string;
     playerRace: string;
@@ -8,27 +9,31 @@ type PlayerStatusProps = {
     playerIcon: string;
     playerCurrentHP: number;
     playerMaxHP: number;
-    playerState: string;
-    playerSheetLink: string;
 }
 
 export default function PlayerStatus({...props}: PlayerStatusProps) {
 
+    function isLowHealthCharacter(currentHealth: number, maxHealth: number): boolean {
+        return currentHealth <= maxHealth / 2;
+    }
+
     return (
-        <div className="flex flex-row">
+        <div className="flex flex-row align-items-centers p-2">
             <div className="w-1/2">
-                <img src={props.playerIcon} alt={props.playerName} />
+                <NavLink to={`/player/${props.playerId}`} className="">
+                    <div className="flex justify-center items-center">
+                        <img className="w-24 h-24 rounded-2xl" src={props.playerIcon} alt={props.playerName} />
+                    </div>
+                </NavLink>
             </div>
-            <div className="w-1/2">
+
+            <div className="w-1/2 text-sm text-balance">
                 <ul>
-                    <li>{props.playerName}</li>
-                    <li>{props.playerRace}</li>
-                    <li>{props.playerClass}</li>
-                    <li>{props.playerLevel}</li>
-                    <li>{props.playerCurrentHP} / {props.playerMaxHP} PV</li>
-                    <li>{props.playerState}</li>
+                    <li className="font-bold">{props.playerName}</li>
+                    <li className="underline">{props.playerClass} {props.playerRace}</li>
+                    <li>Niveau {props.playerLevel}</li>
+                    <li>{isLowHealthCharacter(props.playerCurrentHP, props.playerMaxHP) ? '🔴' : '🟢'} {props.playerCurrentHP} / {props.playerMaxHP} PV</li>
                 </ul>
-                <NavLink to={props.playerSheetLink}>Fiche personnage</NavLink>
             </div>
         </div>
     )

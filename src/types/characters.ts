@@ -1,4 +1,5 @@
 export type PlayerSummary = {
+    playerId: number;
     playerName: string;
     playerClass: string;
     playerRace: string;
@@ -6,6 +7,4 @@ export type PlayerSummary = {
     playerIcon: string;
     playerCurrentHP: number;
     playerMaxHP: number;
-    playerState: string;
-    playerSheetLink: string;
 }

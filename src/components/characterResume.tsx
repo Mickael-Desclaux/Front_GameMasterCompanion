@@ -1,5 +1,40 @@
 import CharacterStats from "@/components/characterStats.tsx";
 import type {Proficiency} from "@/types/characters.ts";
+import type {ReactNode} from "react";
+
+type StatBlockProps = {
+    label: string;
+    children: ReactNode
+}
+
+function StatBlock({ label, children }: StatBlockProps) {
+    return (
+        <div className="flex flex-col items-center border-2 border-gray-200 rounded-lg p-2">
+            <div className="font-bold text-center">{label}</div>
+            <div>{children}</div>
+        </div>
+    )
+}
+
+type ListDisplayProps = {
+    label: string;
+    dataList: string[];
+}
+
+function ListDisplay({label, dataList}: ListDisplayProps) {
+    return (
+        <div className="flex flex-col border-2 border-gray-200 rounded-lg p-2 min-w-1/5">
+            <div className="font-bold mb-1">{label}:</div>
+            <ul className="flex flex-col">
+                {dataList.map((element: string, index: number) => (
+                    <div key={index}>
+                        <li>● {element.toUpperCase()}</li>
+                    </div>
+                ))}
+            </ul>
+        </div>
+    )
+}
 
 export default function CharacterResume() {
 
@@ -26,57 +61,43 @@ export default function CharacterResume() {
         characterDefenses: ["feu", "glace"],
         characterVulnerabilities: ["électrique", "contondant"],
         characterImmunities: ["perçant", "tranchant"],
-        characterLanguages: ["commun", "elfe", "nain"],
+        characterLanguages: ["commun", "elfe", "nain", "infernal"],
     }
 
     return (
         <>
-            <img src={character.characterIcon} alt={character.characterName} />
-            <div>{character.characterName}</div>
-            <div>{character.characterClass} {character.characterRace}</div>
-            <div>Niveau {character.characterLevel}</div>
-            <div>{character.characterInitiative}</div>
-            <div>{character.characterArmor}</div>
-            <div>{character.characterInspirations}</div>
-            <div>{character.characterDefenses.map((defense: string, index: number) => (
-                <div key={index}>
-                    <div>{defense}</div>
+            <h3 className="text-center font-bold text-2xl mb-2 -mt-2">{character.characterName}</h3>
+            <h4 className="text-center underline text-xl mb-4">{character.characterClass} {character.characterRace} -
+                Niveau {character.characterLevel}</h4>
+            <div className="flex flex-row flex-wrap">
+                <div className="flex justify-start w-1/3">
+                    <img src={character.characterIcon} alt={character.characterName} className="w-48 h-48 rounded-2xl"/>
                 </div>
-            ))}</div>
-            <div>
-                {character.characterVulnerabilities.map((vulnerability: string, index: number) => (
-                    <div key={index}>
-                        <div>{vulnerability}</div>
+                <div className="flex flex-col justify-evenly w-2/3">
+                    <div className="flex flex-row justify-evenly">
+                        <StatBlock label="PV" children={`${character.characterCurrentHealth} / ${character.characterMaxHealth} PV`} />
+                        <StatBlock label="Initiative" children={character.characterInitiative > 0 ? `+${character.characterInitiative}` : `-${character.characterInitiative}`}/>
+                        <StatBlock label="CA" children={character.characterArmor} />
+                        <StatBlock label="Inspirations" children={character.characterInspirations} />
                     </div>
-                ))}
-            </div>
-            <div>
-                {character.characterImmunities.map((immunity: string, index: number) => (
-                    <div key={index}>
-                        <div>{immunity}</div>
+                    <div className="flex flex-row justify-center">
+                        <CharacterStats
+                            statsProficiencies={character.characterStatsProficiencies as Proficiency[]}
+                            level={character.characterLevel}
+                            strength={character.characterStats.strength}
+                            dexterity={character.characterStats.dexterity}
+                            constitution={character.characterStats.constitution}
+                            intelligence={character.characterStats.intelligence}
+                            wisdom={character.characterStats.wisdom}
+                            charisma={character.characterStats.charisma}/>
                     </div>
-                ))}
+                </div>
             </div>
-            <div>
-                {character.characterLanguages.map((language: string, index: number) => (
-                    <div key={index}>
-                        <div>{language}</div>
-                    </div>
-                ))}
-            </div>
-
-            <div>{character.characterCurrentHealth} / {character.characterMaxHealth} PV</div>
-
-            <div>
-                <CharacterStats
-                    statsProficiencies={character.characterStatsProficiencies as Proficiency[]}
-                    level={character.characterLevel}
-                    strength={character.characterStats.strength}
-                    dexterity={character.characterStats.dexterity}
-                    constitution={character.characterStats.constitution}
-                    intelligence={character.characterStats.intelligence}
-                    wisdom={character.characterStats.wisdom}
-                    charisma={character.characterStats.charisma} />
+            <div className="flex flex-row justify-evenly mt-4">
+                <ListDisplay label="Résistances" dataList={character.characterDefenses} />
+                <ListDisplay label="Vulnérabilités" dataList={character.characterVulnerabilities} />
+                <ListDisplay label="Immunités" dataList={character.characterImmunities} />
+                <ListDisplay label="Langues" dataList={character.characterLanguages} />
             </div>
         </>
     )

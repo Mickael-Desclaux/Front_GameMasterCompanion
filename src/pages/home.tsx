@@ -9,7 +9,7 @@ export default function Home() {
                 <div className="w-1/2 m-2 border-2 border-gray-200 rounded-lg p-8">
                     <CampaignResume />
                 </div>
-                <div className="w-1/2 m-2">
+                <div className="w-1/2 m-2 border-2 border-gray-200 rounded-lg p-8">
                     <CharacterResume />
                 </div>
             </div>

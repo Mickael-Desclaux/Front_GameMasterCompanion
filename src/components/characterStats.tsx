@@ -1,4 +1,5 @@
 import type {Proficiency} from "@/types/characters.ts";
+import {computeStatBonus} from "@/utils/character.ts";
 
 type CharacterStatsProps = {
     statsProficiencies: Proficiency[];
@@ -17,13 +18,16 @@ type StatDisplayProps = {
 }
 function StatDisplay({label, value}: StatDisplayProps) {
     return (
-        <li>
+        <li className="border-2 border-gray-200 rounded-lg p-3">
             <div className="flex flex-col items-center">
-                <div>
+                <div className="font-bold">
                     {label}
                 </div>
                 <div>
                     {value}
+                </div>
+                <div>
+                    {computeStatBonus(value)}
                 </div>
             </div>
         </li>
@@ -33,7 +37,7 @@ export default function CharacterStats({...props}: CharacterStatsProps) {
 
     return (
         <>
-            <ul className="flex flex-row justify-evenly">
+            <ul className="flex flex-row justify-evenly gap-4">
                 <StatDisplay label={"FOR"} value={props.strength} />
                 <StatDisplay label={"DEX"} value={props.dexterity} />
                 <StatDisplay label={"CON"} value={props.constitution} />

@@ -1,3 +1,6 @@
+import CharacterStats from "@/components/characterStats.tsx";
+import type {Proficiency} from "@/types/characters.ts";
+
 export default function CharacterResume() {
 
     const character = {
@@ -19,31 +22,11 @@ export default function CharacterResume() {
             wisdom: 15,
             charisma: 18,
         },
-        characterStatsProficiencies: ["intelligence", "wisdom"],
+        characterStatsProficiencies: ["CHARISMA", "WISDOM"],
         characterDefenses: ["feu", "glace"],
         characterVulnerabilities: ["électrique", "contondant"],
         characterImmunities: ["perçant", "tranchant"],
         characterLanguages: ["commun", "elfe", "nain"],
-    }
-
-    // TODO: ADD STATS BONUS (+1 FOR 12, +2 FOR 14, ETC...)
-
-    function addProficiencyBonus(): number {
-        if (character.characterLevel >= 5 && character.characterLevel <= 8) {
-            return 3;
-        } else if (character.characterLevel >= 9 && character.characterLevel <= 12) {
-            return 4;
-        } else if (character.characterLevel >= 13 && character.characterLevel <= 16) {
-            return 5;
-        } else if (character.characterLevel >= 17 && character.characterLevel <= 20) {
-            return 6;
-        }
-
-        return 2;
-    }
-
-    function checkProficiencyBonus(stat: string): boolean {
-        return character.characterStatsProficiencies.includes(stat);
     }
 
     return (
@@ -85,26 +68,15 @@ export default function CharacterResume() {
             <div>{character.characterCurrentHealth} / {character.characterMaxHealth} PV</div>
 
             <div>
-                <ul>
-                    <li>
-                        {checkProficiencyBonus("strength") ? character.characterStats.strength + addProficiencyBonus() : character.characterStats.strength}
-                    </li>
-                    <li>
-                        {checkProficiencyBonus("dexterity") ? character.characterStats.dexterity + addProficiencyBonus() : character.characterStats.dexterity}
-                    </li>
-                    <li>
-                        {checkProficiencyBonus("constitution") ? character.characterStats.constitution + addProficiencyBonus() : character.characterStats.constitution}
-                    </li>
-                    <li>
-                        {checkProficiencyBonus("intelligence") ? character.characterStats.intelligence + addProficiencyBonus() : character.characterStats.intelligence}
-                    </li>
-                    <li>
-                        {checkProficiencyBonus("wisdom") ? character.characterStats.wisdom + addProficiencyBonus() : character.characterStats.wisdom}
-                    </li>
-                    <li>
-                        {checkProficiencyBonus("charisma") ? character.characterStats.charisma + addProficiencyBonus() : character.characterStats.charisma}
-                    </li>
-                </ul>
+                <CharacterStats
+                    statsProficiencies={character.characterStatsProficiencies as Proficiency[]}
+                    level={character.characterLevel}
+                    strength={character.characterStats.strength}
+                    dexterity={character.characterStats.dexterity}
+                    constitution={character.characterStats.constitution}
+                    intelligence={character.characterStats.intelligence}
+                    wisdom={character.characterStats.wisdom}
+                    charisma={character.characterStats.charisma} />
             </div>
         </>
     )

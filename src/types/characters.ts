@@ -38,3 +38,11 @@ export type CharacterSkills = {
     stealth: number;
     survival: number;
 }
+
+export type Proficiency =
+    | 'STRENGTH'
+    | 'DEXTERITY'
+    | 'CONSTITUTION'
+    | 'WISDOM'
+    | 'INTELLIGENCE'
+    | 'CHARISMA';

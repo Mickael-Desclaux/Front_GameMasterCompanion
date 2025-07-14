@@ -3,6 +3,7 @@ import PlayerStatus from "@/components/playerStatus.tsx";
 import type {LastCampaign} from "@/types/campaigns.ts";
 import type { LastChapter } from "@/types/chapters";
 import {NavLink} from "react-router-dom";
+import {shortenedText} from "@/utils/misc.ts";
 
 export default function CampaignResume() {
 
@@ -62,15 +63,6 @@ export default function CampaignResume() {
         },
     ]
 
-    function reduceDescription(description: string): string {
-        const maxCharacters = 300;
-        if (description.length < maxCharacters) {
-            return description;
-        }
-
-        return description.slice(0, maxCharacters) + "...";
-    }
-
     return (
         <>
             <div className="text-center">
@@ -80,7 +72,7 @@ export default function CampaignResume() {
                 <NavLink to={`/chapter/${lastChapter.id}`}>
                     <h4 className="text-xl underline mb-2">{lastChapter.title}</h4>
                 </NavLink>
-                <p className="text-sm text-balance mt-4 mb-4">{reduceDescription(lastChapter.description)}</p>
+                <p className="text-sm text-balance mt-4 mb-4">{shortenedText(lastChapter.description, 300)}</p>
             </div>
             <div className="grid grid-cols-2">
                 {charactersData.map((character, index) => (

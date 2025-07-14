@@ -46,3 +46,17 @@ export type Proficiency =
     | 'WISDOM'
     | 'INTELLIGENCE'
     | 'CHARISMA';
+
+export type CharacterClass =
+    | 'Barbare'
+    | 'Barde'
+    | 'Clerc'
+    | 'Druide'
+    | 'Ensorceleur'
+    | 'Guerrier'
+    | 'Magicien'
+    | 'Moine'
+    | 'Occultiste'
+    | 'Paladin'
+    | 'Rôdeur'
+    | 'Roublard'

@@ -1,6 +1,7 @@
 import CampaignResume from "@/components/campaignResume.tsx";
 import CharacterResume from "@/components/characterResume.tsx";
 import NoteResume from "@/components/noteResume.tsx";
+import SpellResume from "@/components/spellResume.tsx";
 
 export default function Home() {
 
@@ -18,8 +19,8 @@ export default function Home() {
                 <div className="w-1/3 m-2">
                     Dernier PNJ consulté
                 </div>
-                <div className="w-1/3 m-2">
-                    Dernier sort consulté
+                <div className="w-1/3 m-2 border-2 border-gray-200 rounded-lg p-8">
+                    <SpellResume />
                 </div>
                 <div className="w-1/3 m-2 border-2 border-gray-200 rounded-lg p-8">
                     <NoteResume />

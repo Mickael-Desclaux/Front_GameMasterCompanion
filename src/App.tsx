@@ -7,7 +7,7 @@ export default function App() {
 
     return(
         <>
-            <div className="flex h-full">
+            <div className="flex min-h-screen">
                 <Sidebar />
                 <div className="flex-1">
                     <Routes>

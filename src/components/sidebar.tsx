@@ -37,7 +37,7 @@ export default function Sidebar() {
 
     return (
         <Card
-            className={`h-[100vh] flex flex-col transition-[width] duration-300 ease-in-out p-4 shadow-xl shadow-blue-gray-900/5 ${
+            className={`flex min-h-screen flex-col transition-[width] duration-300 ease-in-out p-4 shadow-xl shadow-blue-gray-900/5 ${
                 isOpen ? "w-[20rem] items-start" : "w-[5rem] items-center"
             }`}
         >

@@ -37,7 +37,7 @@ export default function CharacterStats({...props}: CharacterStatsProps) {
 
     return (
         <>
-            <ul className="lg:flex lg:flex-row lg:flex-wrap lg:justify-evenly grid grid-cols-2 gap-4 mt-2 lg:m-0">
+            <ul className="grid grid-cols-3 gap-4 mt-2 lg:grid-cols-6 content-evenly lg:m-0">
                 <StatDisplay label={"FOR"} value={props.strength} />
                 <StatDisplay label={"DEX"} value={props.dexterity} />
                 <StatDisplay label={"CON"} value={props.constitution} />

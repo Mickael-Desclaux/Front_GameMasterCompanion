@@ -22,7 +22,7 @@ export default function PlayerStatus({...props}: PlayerStatusProps) {
             <div className="w-1/2">
                 <NavLink to={`/player/${props.playerId}`} className="">
                     <div className="flex justify-center items-center">
-                        <img className="w-24 h-24 rounded-2xl" src={props.playerIcon} alt={props.playerName} />
+                        <img className="lg:w-24 lg:h-24 mb-2 rounded-2xl" src={props.playerIcon} alt={props.playerName} />
                     </div>
                 </NavLink>
             </div>

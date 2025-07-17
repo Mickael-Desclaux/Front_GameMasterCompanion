@@ -9,8 +9,8 @@ type StatBlockProps = {
 
 function StatBlock({ label, children }: StatBlockProps) {
     return (
-        <div className="flex flex-col items-center border-2 border-gray-200 rounded-lg p-2 m-1 lg:m-0">
-            <div className="font-bold text-center">{label}</div>
+        <div className="flex flex-col items-center border-2 border-gray-200 rounded-lg p-2 m-2 lg:m-0">
+            <div className="font-bold text-center text-balance">{label}</div>
             <div>{children}</div>
         </div>
     )
@@ -70,12 +70,12 @@ export default function CharacterResume() {
             <h4 className="text-center underline text-xl mb-4">{character.characterClass} {character.characterRace} -
                 Niveau {character.characterLevel}</h4>
             <div className="flex flex-col lg:flex-row flex-wrap">
-                <div className="flex justify-center lg:justify-start lg:w-1/3">
+                <div className="flex justify-center lg:justify-start lg:w-1/4">
                     <img src={character.characterIcon} alt={character.characterName} className="w-48 h-48 rounded-2xl"/>
                 </div>
-                <div className="flex flex-col justify-center lg:justify-evenly lg:w-2/3">
-                    <div className="flex flex-row flex-wrap justify-center items-center lg:justify-evenly">
-                        <StatBlock label="PV" children={`${character.characterCurrentHealth} / ${character.characterMaxHealth} PV`} />
+                <div className="flex flex-col justify-center lg:justify-evenly lg:w-2/3 m-2 lg:m-0">
+                    <div className="grid lg:grid-cols-4 grid-cols-2 lg:content-evenly gap-2 m-1 justify-center items-center lg:justify-evenly">
+                        <StatBlock label="PV" children={`${character.characterCurrentHealth} / ${character.characterMaxHealth}`} />
                         <StatBlock label="Initiative" children={character.characterInitiative > 0 ? `+${character.characterInitiative}` : `-${character.characterInitiative}`}/>
                         <StatBlock label="CA" children={character.characterArmor} />
                         <StatBlock label="Inspirations" children={character.characterInspirations} />

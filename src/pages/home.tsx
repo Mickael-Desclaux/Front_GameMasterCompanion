@@ -9,21 +9,21 @@ export default function Home() {
     return (
         <div className="flex flex-col w-full h-full justify-center">
             <div className="flex flex-col lg:flex-row w-full h-full">
-                <div className="w-1/2 m-2 border-2 border-gray-200 rounded-lg p-4 lg:p-8">
+                <div className="lg:w-1/2 m-2 border-2 border-gray-200 rounded-lg p-4">
                     <CampaignResume />
                 </div>
-                <div className="w-1/2 m-2 border-2 border-gray-200 rounded-lg p-8">
+                <div className="lg:w-1/2 m-2 border-2 border-gray-200 rounded-lg p-4">
                     <CharacterResume />
                 </div>
             </div>
             <div className="flex flex-col lg:flex-row w-full h-full">
-                <div className="w-1/3 m-2 border-2 border-gray-200 rounded-lg p-8">
+                <div className="lg:w-1/3 m-2 border-2 border-gray-200 rounded-lg p-4">
                     <NPCResume />
                 </div>
-                <div className="w-1/3 m-2 border-2 border-gray-200 rounded-lg p-8">
+                <div className="lg:w-1/3 m-2 border-2 border-gray-200 rounded-lg p-4">
                     <SpellResume />
                 </div>
-                <div className="w-1/3 m-2 border-2 border-gray-200 rounded-lg p-8">
+                <div className="lg:w-1/3 m-2 border-2 border-gray-200 rounded-lg p-4">
                     <NoteResume />
                 </div>
             </div>

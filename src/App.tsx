@@ -7,10 +7,8 @@ export default function App() {
 
     return(
         <>
-            <div className="flex min-h-screen overflow-x-hidden">
-                <div className="hidden lg:block">
-                    <Sidebar />
-                </div>
+            <div className="flex min-h-screen">
+                <Sidebar />
                 <div className="flex-1">
                     <Routes>
                         <Route path="/" element={<Home />} />

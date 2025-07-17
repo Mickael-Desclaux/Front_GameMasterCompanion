@@ -1,6 +1,6 @@
 import { Card, List, ListItem, Typography } from "@material-tailwind/react";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 
 type IconDisplayProps = {
     icon: string;
@@ -34,8 +34,83 @@ const navItems: NavItem[] = [
 
 export default function Sidebar() {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isMobile, setIsMobile] = useState(false);
 
-    return (
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+
+            if (width < 768) {
+                setIsMobile(true);
+            } else {
+                setIsMobile(false);
+            }
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    if (isMobile) {
+        return (
+            <>
+                {!isOpen && (
+                    <div className="fixed top-4 left-4 z-50">
+                        <img
+                            src="/menu.svg"
+                            alt="Open menu"
+                            className="w-8 h-8 cursor-pointer bg-white rounded-lg shadow-lg p-1"
+                            onClick={() => setIsOpen(true)}
+                        />
+                    </div>
+                )}
+
+                {isOpen && (
+                    <div className="fixed inset-0 z-40 bg-white">
+                        <Card className="h-full w-full p-4 shadow-none bg-white">
+                            <div className="flex justify-between items-center mb-6">
+                                <div className="flex items-center">
+                                    <img src="/dice.svg" alt="dice" className="w-8 h-8 mr-3" />
+                                    <Typography
+                                        variant="h5"
+                                        color="blue-gray"
+                                        className="whitespace-nowrap"
+                                    >
+                                        Game Master Companion
+                                    </Typography>
+                                </div>
+                                <img
+                                    src="/close.svg"
+                                    alt="Close menu"
+                                    className="w-8 h-8 cursor-pointer"
+                                    onClick={() => setIsOpen(false)}
+                                />
+                            </div>
+
+                            <List className="gap-4">
+                                {navItems.map(({ to, label, icon, alt }) => (
+                                    <ListItem key={to} className="p-0">
+                                        <NavLink
+                                            to={to}
+                                            aria-current="page"
+                                            className="flex items-center p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            <div className="mr-4">
+                                                <IconDisplay icon={icon} alt={alt} />
+                                            </div>
+                                            <span className="text-base font-medium">{label}</span>
+                                        </NavLink>
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </Card>
+                    </div>
+                )}
+            </>
+        )
+    } else return (
         <Card
             className={`flex min-h-screen flex-col transition-[width] duration-300 ease-in-out p-4 shadow-xl shadow-blue-gray-900/5 ${
                 isOpen ? "w-[20rem] items-start" : "w-[5rem] items-center"
@@ -90,5 +165,5 @@ export default function Sidebar() {
                 ))}
             </List>
         </Card>
-    );
+    )
 }

@@ -18,7 +18,7 @@ export default function PlayerStatus({...props}: PlayerStatusProps) {
     }
 
     return (
-        <div className="flex flex-row align-items-centers p-2">
+        <div className="flex flex-col text-center lg:flex-row lg:text-left items-center p-2">
             <div className="w-1/2">
                 <NavLink to={`/player/${props.playerId}`} className="">
                     <div className="flex justify-center items-center">

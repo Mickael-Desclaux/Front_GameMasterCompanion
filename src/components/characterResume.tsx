@@ -9,7 +9,7 @@ type StatBlockProps = {
 
 function StatBlock({ label, children }: StatBlockProps) {
     return (
-        <div className="flex flex-col items-center border-2 border-gray-200 rounded-lg p-2">
+        <div className="flex flex-col items-center border-2 border-gray-200 rounded-lg p-2 m-1 lg:m-0">
             <div className="font-bold text-center">{label}</div>
             <div>{children}</div>
         </div>
@@ -23,9 +23,9 @@ type ListDisplayProps = {
 
 function ListDisplay({label, dataList}: ListDisplayProps) {
     return (
-        <div className="flex flex-col border-2 border-gray-200 rounded-lg p-2 min-w-1/5">
+        <div className="flex flex-col border-2 border-gray-200 rounded-lg p-2 mt-4 lg:m-0 min-w-1/5">
             <div className="font-bold mb-1">{label}:</div>
-            <ul className="flex flex-col">
+            <ul className="text-sm flex flex-col">
                 {dataList.map((element: string, index: number) => (
                     <div key={index}>
                         <li>● {element.toUpperCase()}</li>
@@ -69,12 +69,12 @@ export default function CharacterResume() {
             <h3 className="text-center font-bold text-2xl mb-2 -mt-2">{character.characterName}</h3>
             <h4 className="text-center underline text-xl mb-4">{character.characterClass} {character.characterRace} -
                 Niveau {character.characterLevel}</h4>
-            <div className="flex flex-row flex-wrap">
-                <div className="flex justify-start w-1/3">
+            <div className="flex flex-col lg:flex-row flex-wrap">
+                <div className="flex justify-center lg:justify-start lg:w-1/3">
                     <img src={character.characterIcon} alt={character.characterName} className="w-48 h-48 rounded-2xl"/>
                 </div>
-                <div className="flex flex-col justify-evenly w-2/3">
-                    <div className="flex flex-row justify-evenly">
+                <div className="flex flex-col justify-center lg:justify-evenly lg:w-2/3">
+                    <div className="flex flex-row flex-wrap justify-center items-center lg:justify-evenly">
                         <StatBlock label="PV" children={`${character.characterCurrentHealth} / ${character.characterMaxHealth} PV`} />
                         <StatBlock label="Initiative" children={character.characterInitiative > 0 ? `+${character.characterInitiative}` : `-${character.characterInitiative}`}/>
                         <StatBlock label="CA" children={character.characterArmor} />
@@ -93,7 +93,7 @@ export default function CharacterResume() {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-row justify-evenly mt-4">
+            <div className="flex flex-col lg:flex-row lg:justify-evenly mt-4">
                 <ListDisplay label="Résistances" dataList={character.characterDefenses} />
                 <ListDisplay label="Vulnérabilités" dataList={character.characterVulnerabilities} />
                 <ListDisplay label="Immunités" dataList={character.characterImmunities} />

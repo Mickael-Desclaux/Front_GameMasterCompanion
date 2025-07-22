@@ -43,18 +43,24 @@ function DiceImage({...props}: DiceImageProps) {
     }
 
     return (
-        <li className="flex flex-col items-center p-2">
-            {diceCount > 0 && (
-                <p className="text-sm w-full text-center rounded-full bg-red-800 text-white">
-                    {diceCount}
-                </p>
-            )}
+        <li className="relative p-2">
+            <button onClick={() => handleDiceClick(props.dice)} className="relative">
+                <img
+                    src={`d${props.dice}.svg`}
+                    alt={`d${props.dice}`}
+                    className={`w-12 h-12 transition-opacity duration-200 ${
+                        diceCount > 0 ? 'opacity-50' : 'opacity-100'
+                    }`}
+                />
 
-            <button onClick={() => handleDiceClick(props.dice)}>
-                <img className="w-12 h-12" src={`d${props.dice}.svg`} alt={props.dice.toString()} />
+                {diceCount > 0 && (
+                    <span className="absolute inset-0 flex items-center justify-center text-black bg-white opacity-70 rounded-full text-xl font-bold pointer-events-none">
+                        {diceCount}
+                    </span>
+                )}
             </button>
         </li>
-    )
+    );
 }
 
 export default function Dice() {
@@ -81,7 +87,7 @@ export default function Dice() {
 
     return (
         <>
-            <div className="flex flex-row-reverse gap-4 bg-amber-300 rounded-2xl items-center">
+            <div className="flex flex-row-reverse gap-4 border-2 rounded-2xl items-center">
                 <button onClick={() => setIsOpen(!isOpen)}>
                     <img className="w-16 h-16" src="/dices.svg" alt="Lancer un dé"/>
                 </button>

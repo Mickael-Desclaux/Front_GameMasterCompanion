@@ -87,18 +87,18 @@ export default function Dice() {
 
     return (
         <>
-            <div className="flex flex-row-reverse gap-4 border-2 rounded-2xl items-center">
+            <div className="flex flex-col-reverse h-full lg:flex-row-reverse gap-4 border-2 bg-gray-500 rounded-full items-center">
                 <button onClick={() => setIsOpen(!isOpen)}>
-                    <img className="w-16 h-16" src="/dices.svg" alt="Lancer un dé"/>
+                    <img className="w-16 h-16" src="/d20.svg" alt="Lancer un dé"/>
                 </button>
                 {isOpen && (
-                    <ul className="flex flex-row-reverse items-center gap-2">
+                    <ul className="flex flex-col-reverse lg:flex-row-reverse items-center gap-2">
                         {throwResult !== 0 && (
                             <li>
                                 Résultat: {throwResult}
                             </li>
                         )}
-                        <Button className="text-black flex items-center" onClick={() => handleThrow(selectedDices)}>
+                        <Button className="text-black bg-gray-300 p-2 flex items-center" onClick={() => handleThrow(selectedDices)}>
                             Throw
                         </Button>
                         <DiceImage dice={20} selectedDices={selectedDices} setSelectedDices={setSelectedDices}/>

@@ -4,7 +4,7 @@ import NoteResume from "@/components/noteResume.tsx";
 import SpellResume from "@/components/spellResume.tsx";
 import NPCResume from "@/components/npcResume.tsx";
 
-export default function Home() {
+export default function HomePage() {
 
     return (
         <div className="flex flex-col w-full justify-center">

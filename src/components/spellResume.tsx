@@ -1,23 +1,9 @@
 import {NavLink} from "react-router-dom";
-import type {SpellResume} from "@/types/spell.ts";
 import type {CharacterClass} from "@/types/characters.ts";
 import {shortenedText} from "@/utils/misc.ts";
+import {lastSpell} from "@/fakeData/data.ts";
 
 export default function SpellResume() {
-
-    const lastSpell: SpellResume = {
-        id: 1,
-        name: "Boule de feu",
-        level: 3,
-        castingTime: "1 action",
-        duration: "instantanée",
-        classes: ["Ensorceleur", "Magicien", "Occultiste"],
-        description: "Une éclatante traînée lumineuse est émise de la pointe de votre doigt vers un point de votre choix " +
-            "dans la portée du sort, puis s'amplifie dans un rugissement grave jusqu'à éclater en flammes. Chaque " +
-            "créature située dans une sphère de 6 mètres de rayon centrée sur le point doit effectuer un jet de " +
-            "sauvegarde de Dextérité, subissant 8d6 dégâts de feu en cas d'échec, ou la moitié de ces dégâts en cas de réussite." +
-            "Le feu contourne les coins. Il enflamme les objets inflammables qui ne sont pas portés ou transportés.",
-    }
 
     return (
         <>

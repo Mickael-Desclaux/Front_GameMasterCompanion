@@ -9,12 +9,12 @@ type DiceImageProps = {
 
 type SelectedDicesType = {
     dice: number;
-    diceNumber: number;
+    counter: number;
 }
 
 function DiceImage({...props}: DiceImageProps) {
 
-    const diceCount = props.selectedDices.find((d) => d.dice === props.dice)?.diceNumber ?? 0;
+    const diceCount = props.selectedDices.find((d) => d.dice === props.dice)?.counter ?? 0;
 
     function handleDiceClick(dice: number) {
         const existingDice = props.selectedDices.find((diceObj) => diceObj.dice === dice);
@@ -24,7 +24,7 @@ function DiceImage({...props}: DiceImageProps) {
                 if (diceObj.dice === dice) {
                     return {
                         ...diceObj,
-                        diceNumber: diceObj.diceNumber + 1,
+                        counter: diceObj.counter + 1,
                     };
                 } else {
                     return diceObj;
@@ -35,7 +35,7 @@ function DiceImage({...props}: DiceImageProps) {
         } else {
             const newDice: SelectedDicesType = {
                 dice: dice,
-                diceNumber: 1,
+                counter: 1,
             };
 
             props.setSelectedDices([...props.selectedDices, newDice]);
@@ -43,7 +43,7 @@ function DiceImage({...props}: DiceImageProps) {
     }
 
     return (
-        <li className="relative p-2">
+        <li className="flex items-center p-2">
             <button onClick={() => handleDiceClick(props.dice)} className="relative">
                 <img
                     src={`d${props.dice}.svg`}
@@ -54,7 +54,7 @@ function DiceImage({...props}: DiceImageProps) {
                 />
 
                 {diceCount > 0 && (
-                    <span className="absolute inset-0 flex items-center justify-center text-black bg-white opacity-70 rounded-full text-xl font-bold pointer-events-none">
+                    <span className="absolute inset-0 flex items-center justify-center text-black bg-white opacity-80 rounded-full text-xl font-bold pointer-events-none">
                         {diceCount}
                     </span>
                 )}
@@ -71,11 +71,9 @@ export default function Dice() {
     function handleThrow(selectedDices: SelectedDicesType[]): void {
         let total = 0;
 
-        for (const { dice, diceNumber } of selectedDices) {
-            for (let i = 0; i < diceNumber; i++) {
+        for (const { dice, counter } of selectedDices) {
+            for (let i = 0; i < counter; i++) {
                 const diceThrow = Math.floor(Math.random() * dice) + 1;
-                console.log("dice", dice)
-                console.log("result", diceThrow);
                 total += diceThrow;
             }
         }
@@ -87,19 +85,19 @@ export default function Dice() {
 
     return (
         <>
-            <div className="flex flex-col-reverse h-full lg:flex-row-reverse gap-4 border-2 bg-gray-500 rounded-full items-center">
+            <div className="flex flex-col-reverse h-full lg:flex-row-reverse gap-4 bg-red-300 rounded-2xl p-2 items-center">
                 <button onClick={() => setIsOpen(!isOpen)}>
                     <img className="w-16 h-16" src="/d20.svg" alt="Lancer un dé"/>
                 </button>
                 {isOpen && (
-                    <ul className="flex flex-col-reverse lg:flex-row-reverse items-center gap-2">
+                    <ul className="flex flex-col-reverse lg:flex-row-reverse items-center gap-4">
                         {throwResult !== 0 && (
-                            <li>
+                            <li className="text-black bg-white p-2 flex items-center font-bold rounded-lg">
                                 Résultat: {throwResult}
                             </li>
                         )}
-                        <Button className="text-black bg-gray-300 p-2 flex items-center" onClick={() => handleThrow(selectedDices)}>
-                            Throw
+                        <Button className="flex-wrap text-black bg-white p-2 flex items-center" onClick={() => handleThrow(selectedDices)}>
+                            Lancer
                         </Button>
                         <DiceImage dice={20} selectedDices={selectedDices} setSelectedDices={setSelectedDices}/>
                         <DiceImage dice={12} selectedDices={selectedDices} setSelectedDices={setSelectedDices} />

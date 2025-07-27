@@ -46,7 +46,7 @@ function DiceImage({...props}: DiceImageProps) {
         <li className="flex items-center p-2">
             <button onClick={() => handleDiceClick(props.dice)} className="relative">
                 <img
-                    src={`d${props.dice}.svg`}
+                    src={`/d${props.dice}.svg`}
                     alt={`d${props.dice}`}
                     className={`w-12 h-12 transition-opacity duration-200 ${
                         diceCount > 0 ? 'opacity-50' : 'opacity-100'
@@ -54,7 +54,8 @@ function DiceImage({...props}: DiceImageProps) {
                 />
 
                 {diceCount > 0 && (
-                    <span className="absolute inset-0 flex items-center justify-center text-black bg-white opacity-80 rounded-full text-xl font-bold pointer-events-none">
+                    <span
+                        className="absolute inset-0 flex items-center justify-center text-black bg-white opacity-80 rounded-full text-xl font-bold pointer-events-none">
                         {diceCount}
                     </span>
                 )}
@@ -71,7 +72,7 @@ export default function Dice() {
     function handleThrow(selectedDices: SelectedDicesType[]): void {
         let total = 0;
 
-        for (const { dice, counter } of selectedDices) {
+        for (const {dice, counter} of selectedDices) {
             for (let i = 0; i < counter; i++) {
                 const diceThrow = Math.floor(Math.random() * dice) + 1;
                 total += diceThrow;
@@ -85,7 +86,8 @@ export default function Dice() {
 
     return (
         <>
-            <div className="flex flex-col-reverse h-full lg:flex-row-reverse gap-4 bg-red-300 rounded-2xl p-2 items-center">
+            <div
+                className="flex flex-col-reverse h-full lg:flex-row-reverse gap-4 bg-red-300 rounded-2xl p-2 items-center">
                 <button onClick={() => setIsOpen(!isOpen)}>
                     <img className="w-16 h-16" src="/d20.svg" alt="Lancer un dé"/>
                 </button>
@@ -96,15 +98,16 @@ export default function Dice() {
                                 Résultat: {throwResult}
                             </li>
                         )}
-                        <Button className="flex-wrap text-black bg-white p-2 flex items-center" onClick={() => handleThrow(selectedDices)}>
+                        <Button className="flex-wrap text-black bg-white p-2 flex items-center"
+                                onClick={() => handleThrow(selectedDices)}>
                             Lancer
                         </Button>
                         <DiceImage dice={20} selectedDices={selectedDices} setSelectedDices={setSelectedDices}/>
-                        <DiceImage dice={12} selectedDices={selectedDices} setSelectedDices={setSelectedDices} />
-                        <DiceImage dice={10} selectedDices={selectedDices} setSelectedDices={setSelectedDices} />
-                        <DiceImage dice={8} selectedDices={selectedDices} setSelectedDices={setSelectedDices} />
-                        <DiceImage dice={6} selectedDices={selectedDices} setSelectedDices={setSelectedDices} />
-                        <DiceImage dice={4} selectedDices={selectedDices} setSelectedDices={setSelectedDices} />
+                        <DiceImage dice={12} selectedDices={selectedDices} setSelectedDices={setSelectedDices}/>
+                        <DiceImage dice={10} selectedDices={selectedDices} setSelectedDices={setSelectedDices}/>
+                        <DiceImage dice={8} selectedDices={selectedDices} setSelectedDices={setSelectedDices}/>
+                        <DiceImage dice={6} selectedDices={selectedDices} setSelectedDices={setSelectedDices}/>
+                        <DiceImage dice={4} selectedDices={selectedDices} setSelectedDices={setSelectedDices}/>
                     </ul>
                 )}
             </div>

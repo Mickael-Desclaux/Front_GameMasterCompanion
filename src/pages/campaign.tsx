@@ -17,13 +17,15 @@ function ChapterDetails({id, title, description}: ChapterDetailsProps) {
     return (
         <li className="pb-4">
             <div className="flex flex-col w-full justify-center">
-                <div className="font-bold flex flex-row gap-2">
-                    <NavLink to={`/chapter/${id}`} className="flex justify-start text-lg">
+                <div className="font-bold flex flex-row">
+                    <NavLink to={`/chapter/${id}`} className="flex w-full flex-wrap text-balance justify-start text-lg">
                         {title}
                     </NavLink>
-                    <button className="flex justify-end" onClick={() => setOpen(!isOpen)}>
-                        <img src="/down.svg" alt="expand"/>
-                    </button>
+                    <div className="flex justify-end">
+                        <button onClick={() => setOpen(!isOpen)}>
+                            <img src="/down.svg" alt="expand" className="flex justify-end"/>
+                        </button>
+                    </div>
                 </div>
 
                 {isOpen && (
@@ -44,7 +46,7 @@ export default function CampaignPage() {
         <>
             <div className="flex flex-row w-full h-screen">
                 <div className="flex flex-col lg:w-1/3">
-                    <div className="h-full m-2 border-2 border-gray-200 rounded-lg p-4">
+                    <div className="h-full m-2 border-2 border-gray-200 rounded-lg p-4 overflow-auto">
                         <h2 className="pb-4 underline text-2xl font-bold text-center">Chapitres</h2>
                         <ul>
                             {campaignData.chapters.map((chapter) => (

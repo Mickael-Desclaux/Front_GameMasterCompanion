@@ -80,13 +80,13 @@ export default function CampaignPage() {
                         </div>
                         <div className="border-2 border-gray-200 rounded-lg m-2 p-4 overflow-auto">
                             <h2 className="font-bold text-2xl underline text-center">Notes</h2>
-                            <ul>
+                            <ul className="p-2">
                                 {campaignData.notes.map((note) => (
                                     <li key={note.id} className="pb-2">
                                         <div className="font-bold underline">
                                             {note.title}
                                         </div>
-                                        <div className="text-sm">
+                                        <div className="text-sm text-balance">
                                             {note.content}
                                         </div>
                                     </li>

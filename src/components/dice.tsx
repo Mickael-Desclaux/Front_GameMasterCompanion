@@ -87,7 +87,7 @@ export default function Dice() {
     return (
         <>
             <div
-                className="flex flex-col-reverse h-full lg:flex-row-reverse gap-4 bg-red-300 rounded-2xl p-2 items-center">
+                className={`flex flex-col-reverse h-full lg:flex-row-reverse gap-4 rounded-2xl p-2 items-center ${isOpen ? "bg-amber-300" : ""}`}>
                 <button onClick={() => setIsOpen(!isOpen)}>
                     <img className="w-16 h-16" src="/d20.svg" alt="Lancer un dé"/>
                 </button>

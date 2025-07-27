@@ -373,5 +373,35 @@ export const campaignData = {
                 "eleifend urna eu, eleifend magna. Etiam leo mauris, ornare id neque et, pellentesque feugiat erat.",
             updatedAt: "26/07/2025"
         },
+        {
+            id: 4,
+            title: "Note de session : 12/10/2024",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lectus turpis, fringilla " +
+                "sit amet auctor in, suscipit quis risus. Nullam iaculis porttitor pretium. Maecenas eget nibh maximus, " +
+                "pretium massa a, auctor tortor. Curabitur ultrices dui felis, non mattis ipsum fermentum eget. Nunc laoreet " +
+                "elit nibh, at venenatis lorem vehicula ac. Nam tempus sagittis ante vel laoreet. Cras id leo euismod, " +
+                "eleifend urna eu, eleifend magna. Etiam leo mauris, ornare id neque et, pellentesque feugiat erat.",
+            updatedAt: "24/07/2025"
+        },
+        {
+            id: 5,
+            title: "Note de session : 18/10/2024",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lectus turpis, fringilla " +
+                "sit amet auctor in, suscipit quis risus. Nullam iaculis porttitor pretium. Maecenas eget nibh maximus, " +
+                "pretium massa a, auctor tortor. Curabitur ultrices dui felis, non mattis ipsum fermentum eget. Nunc laoreet " +
+                "elit nibh, at venenatis lorem vehicula ac. Nam tempus sagittis ante vel laoreet. Cras id leo euismod, " +
+                "eleifend urna eu, eleifend magna. Etiam leo mauris, ornare id neque et, pellentesque feugiat erat.",
+            updatedAt: "25/07/2025"
+        },
+        {
+            id: 6,
+            title: "Note de session : 24/10/2024",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lectus turpis, fringilla " +
+                "sit amet auctor in, suscipit quis risus. Nullam iaculis porttitor pretium. Maecenas eget nibh maximus, " +
+                "pretium massa a, auctor tortor. Curabitur ultrices dui felis, non mattis ipsum fermentum eget. Nunc laoreet " +
+                "elit nibh, at venenatis lorem vehicula ac. Nam tempus sagittis ante vel laoreet. Cras id leo euismod, " +
+                "eleifend urna eu, eleifend magna. Etiam leo mauris, ornare id neque et, pellentesque feugiat erat.",
+            updatedAt: "26/07/2025"
+        },
     ]
 }

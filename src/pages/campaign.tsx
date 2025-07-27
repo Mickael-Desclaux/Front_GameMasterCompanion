@@ -17,8 +17,8 @@ function ChapterDetails({id, title, description}: ChapterDetailsProps) {
     return (
         <li className="pb-4">
             <div className="flex flex-col w-full justify-center">
-                <div className="font-bold flex flex-row">
-                    <NavLink to={`/chapter/${id}`} className="flex w-full flex-wrap text-balance justify-start text-lg">
+                <div className="font-bold flex flex-row items-center">
+                    <NavLink to={`chapter/${id}`} className="flex w-full flex-wrap text-balance justify-start text-lg">
                         {title}
                     </NavLink>
                     <div className="flex justify-end">
@@ -78,8 +78,20 @@ export default function CampaignPage() {
                                 ))}
                             </div>
                         </div>
-                        <div className="border-2 border-gray-200 rounded-lg m-2 p-4">
-                            <h2>Liste des notes</h2>
+                        <div className="border-2 border-gray-200 rounded-lg m-2 p-4 overflow-auto">
+                            <h2 className="font-bold text-2xl underline text-center">Notes</h2>
+                            <ul>
+                                {campaignData.notes.map((note) => (
+                                    <li key={note.id} className="pb-2">
+                                        <div className="font-bold underline">
+                                            {note.title}
+                                        </div>
+                                        <div className="text-sm">
+                                            {note.content}
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>

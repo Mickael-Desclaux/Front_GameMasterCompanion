@@ -20,11 +20,12 @@ export default function PlayerStatus({...props}: PlayerStatusProps) {
     return (
         <div className="flex flex-col text-center lg:flex-row lg:text-left items-center p-2">
             <div className="w-1/2">
-                <NavLink to={`/player/${props.playerId}`} className="">
-                    <div className="flex justify-center items-center">
-                        <img className="lg:w-24 lg:h-24 mb-2 rounded-2xl" src={props.playerIcon} alt={props.playerName} />
-                    </div>
-                </NavLink>
+                <div className="flex justify-center items-center">
+                    <NavLink to={`/player/${props.playerId}`}>
+                        <img className="lg:w-24 lg:h-24 mb-2 rounded-2xl" src={props.playerIcon}
+                             alt={props.playerName}/>
+                    </NavLink>
+                </div>
             </div>
 
             <div className="w-1/2 text-sm text-balance">

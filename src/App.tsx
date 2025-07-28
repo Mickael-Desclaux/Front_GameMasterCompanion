@@ -4,6 +4,7 @@ import HomePage from "@/pages/home.tsx";
 import Sidebar from "@/components/sidebar.tsx";
 import Dice from "@/components/dice.tsx";
 import CampaignPage from "@/pages/campaign.tsx";
+import PlayerPage from "@/pages/player.tsx";
 
 export default function App() {
 
@@ -15,6 +16,7 @@ export default function App() {
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
                         <Route path="/campaign/:campaignId" element={<CampaignPage/>}/>
+                        <Route path="/player/:playerId" element={<PlayerPage/>}/>
                     </Routes>
                     <div className="fixed bottom-2 right-2">
                         <Dice/>

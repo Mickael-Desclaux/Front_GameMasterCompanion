@@ -405,3 +405,14 @@ export const campaignData = {
         },
     ]
 }
+
+export const playerData = {
+    id: 1,
+    name: "Jean-Christophain de la table basse",
+    class: "Mage",
+    race: "Haut-Elfe",
+    level: 2,
+    currentHP: 15,
+    maxHP: 24,
+    icon: "https://docs.material-tailwind.com/img/face-2.jpg",
+}

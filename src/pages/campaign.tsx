@@ -44,20 +44,20 @@ export default function CampaignPage() {
 
     return (
         <>
-            <div className="flex flex-row w-full h-screen">
-                <div className="flex flex-col lg:w-1/3">
+            <div className="flex flex-col lg:flex-row w-full h-screen">
+                <div className="flex flex-col w-full lg:w-1/3">
                     <div className="h-full m-2 border-2 border-gray-200 rounded-lg p-4 overflow-auto">
                         <h2 className="pb-4 underline text-2xl font-bold text-center">Chapitres</h2>
                         <ul>
                             {campaignData.chapters.map((chapter) => (
                                 <ChapterDetails id={chapter.id} title={chapter.title}
-                                                description={chapter.description}/>
+                                                description={chapter.description} key={chapter.id}/>
                             ))}
                         </ul>
                     </div>
                 </div>
 
-                <div className="lg:w-2/3">
+                <div className="w-full lg:w-2/3">
                     <div className="h-full w-full flex flex-col">
                         <div className="border-2 border-gray-200 rounded-lg m-2 p-4">
                             <h2 className="pb-4 underline text-2xl font-bold text-center">Joueurs</h2>

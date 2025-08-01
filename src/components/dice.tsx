@@ -87,18 +87,18 @@ export default function Dice() {
     return (
         <>
             <div
-                className={`flex flex-col-reverse h-full lg:flex-row-reverse gap-4 rounded-2xl p-2 items-center ${isOpen ? "bg-amber-300" : ""}`}>
+                className={`flex flex-col-reverse h-full lg:flex-row-reverse gap-4 rounded-2xl p-2 items-center ${isOpen ? "bg-gray-100 border-2 border-gray-300" : ""} shadow-sm`}>
                 <button onClick={() => setIsOpen(!isOpen)}>
                     <img className="w-16 h-16" src="/d20.svg" alt="Lancer un dé"/>
                 </button>
                 {isOpen && (
                     <ul className="flex flex-col-reverse lg:flex-row-reverse items-center gap-4">
                         {throwResult !== 0 && (
-                            <li className="text-black bg-white p-2 flex items-center font-bold rounded-lg">
+                            <li className="text-black p-2 flex items-center font-bold rounded-lg">
                                 Résultat: {throwResult}
                             </li>
                         )}
-                        <Button className="flex-wrap text-black bg-white p-2 flex items-center"
+                        <Button className="flex-wrap text-black bg-amber-300 p-2 flex items-center"
                                 onClick={() => handleThrow(selectedDices)}>
                             Lancer
                         </Button>

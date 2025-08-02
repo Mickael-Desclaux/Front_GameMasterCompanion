@@ -9,6 +9,25 @@ export type PlayerSummary = {
     playerMaxHP: number;
 }
 
+export type Character = {
+    characterIcon: string,
+    characterName: string,
+    characterClass: CharacterClass,
+    characterRace: string, //CharacterRace
+    characterLevel: number,
+    characterCurrentHealth: number,
+    characterMaxHealth: number,
+    characterInitiative: number,
+    characterArmor: number,
+    characterInspirations: number,
+    characterStats: CharacterStats,
+    characterStatsProficiencies: Proficiency[],
+    characterDefenses: string[],
+    characterVulnerabilities: string[],
+    characterImmunities: string[],
+    characterLanguages: string[],
+}
+
 export type CharacterStats = {
     strength: number;
     dexterity: number;

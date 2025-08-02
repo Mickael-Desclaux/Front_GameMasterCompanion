@@ -52,7 +52,7 @@ export const lastNPC = {
         "tortor ullamcorper.",
 }
 
-export const character = {
+export const character: Character = {
     characterIcon: "https://docs.material-tailwind.com/img/face-3.jpg",
     characterName: "Guy",
     characterClass: "Mage",

@@ -36,18 +36,20 @@ export default function PlayerPage() {
                             <ul className="flex flex-col gap-2">
                                 <li className="w-full border-2 rounded-sm">
                                     <div className="flex flex-row items-center gap-2 w-full p-4 font-bold">
-                                        <span>{character.characterInspirations}</span>
+                                        <span
+                                            className="px-1 py-0.5 bg-gray-200 w-8 text-center rounded-sm">{character.characterInspirations}</span>
                                         <span className="text-center w-full">Inspirations</span>
                                     </div>
                                 </li>
                                 <li className="w-full border-2 rounded-sm">
                                     <div className="flex flex-row items-center gap-2 w-full p-4 font-bold">
-                                        <span>+{addProficiencyBonus(character.characterLevel)}</span>
+                                        <span
+                                            className="px-1 py-0.5 bg-gray-200 w-8 text-center rounded-sm">+{addProficiencyBonus(character.characterLevel)}</span>
                                         <span className="text-center w-full">Bonus de maîtrise</span>
                                     </div>
                                 </li>
                                 <SavingThrowsList statProficiencies={character.characterStatsProficiencies}
-                                                  stat={character.characterStats}/>
+                                                  stat={character.characterStats} level={character.characterLevel}/>
                                 <li className="w-full bg-amber-300">Compétences</li>
                             </ul>
                         </div>
@@ -67,25 +69,26 @@ export default function PlayerPage() {
 type SavingThrowsListProps = {
     statProficiencies: Proficiency[],
     stat: CharacterStats,
+    level: number
 }
 
-function SavingThrowsList({statProficiencies, stat}: SavingThrowsListProps) {
+function SavingThrowsList({statProficiencies, stat, level}: SavingThrowsListProps) {
 
     return (
-        <ul className="border-2 border-gray-200 rounded-lg p-4">
+        <ul className="border-2 border-gray-200 rounded-lg p-4 flex flex-col gap-2">
             <SavingThrowStat statProficiencies={statProficiencies} statLabel="Force" stat={stat.strength}
-                             proficiency={"STRENGTH"}/>
+                             proficiency={"STRENGTH"} level={level}/>
             <SavingThrowStat statProficiencies={statProficiencies} statLabel="Dextérité" stat={stat.dexterity}
-                             proficiency={"DEXTERITY"}/>
+                             proficiency={"DEXTERITY"} level={level}/>
             <SavingThrowStat statProficiencies={statProficiencies} statLabel="Constitution" stat={stat.constitution}
-                             proficiency={"CONSTITUTION"}/>
+                             proficiency={"CONSTITUTION"} level={level}/>
             <SavingThrowStat statProficiencies={statProficiencies} statLabel="Intelligence" stat={stat.intelligence}
-                             proficiency={"INTELLIGENCE"}/>
+                             proficiency={"INTELLIGENCE"} level={level}/>
             <SavingThrowStat statProficiencies={statProficiencies} statLabel="Sagesse" stat={stat.wisdom}
-                             proficiency={"WISDOM"}/>
+                             proficiency={"WISDOM"} level={level}/>
             <SavingThrowStat statProficiencies={statProficiencies} statLabel="Charisme" stat={stat.charisma}
-                             proficiency={"CHARISMA"}/>
-            <li className="font-bold text-center">Jets de sauvegarde</li>
+                             proficiency={"CHARISMA"} level={level}/>
+            <li className="font-bold text-center mt-2">Jets de sauvegarde</li>
         </ul>
     )
 }
@@ -94,15 +97,20 @@ type SavingThrowStatProps = {
     statProficiencies: Proficiency[],
     proficiency: Proficiency,
     statLabel: string,
-    stat: number
+    stat: number,
+    level: number
 }
 
-function SavingThrowStat({statProficiencies, statLabel, stat, proficiency}: SavingThrowStatProps) {
+function SavingThrowStat({statProficiencies, statLabel, stat, proficiency, level}: SavingThrowStatProps) {
     return (
-        <li className="flex flex-row gap-2">
-            <input type="checkbox" readOnly={true} className="rounded-full"
+        <li className="flex flex-row  items-center gap-2">
+            <input type="radio" readOnly={true}
+                   className="appearance-none peer w-3 h-3 border-2 border-gray-300 rounded-full checked:bg-slate-800 checked:border-slate-800"
                    checked={checkProficiencyBonus(statProficiencies, proficiency)}/>
-            <span>{computeStatBonus(stat)}</span>
+            <span className="px-1 py-0.5 bg-gray-200 w-8 text-center rounded-sm">
+                {checkProficiencyBonus(statProficiencies, proficiency) ?
+                    `+${Number(computeStatBonus(stat)) + addProficiencyBonus(level)}` :
+                    computeStatBonus(stat)}</span>
             <span>{statLabel}</span>
         </li>
     )

@@ -1,5 +1,3 @@
-import type {Proficiency} from "@/types/characters.ts";
-
 export function addProficiencyBonus(characterLevel: number): number {
     if (characterLevel >= 5 && characterLevel <= 8) {
         return 3;
@@ -14,8 +12,8 @@ export function addProficiencyBonus(characterLevel: number): number {
     return 2;
 }
 
-export function checkProficiencyBonus(characterStatsProficiencies: Proficiency[], stat: Proficiency): boolean {
-    return characterStatsProficiencies.includes(stat);
+export function checkProficiencyBonus(characterProficiencies: string[], stat: string): boolean {
+    return characterProficiencies.includes(stat);
 }
 
 export function computeStatBonus(characterStat: number): string {

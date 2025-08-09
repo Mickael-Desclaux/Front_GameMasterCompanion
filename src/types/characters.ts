@@ -22,6 +22,7 @@ export type Character = {
     characterInspirations: number,
     characterStats: CharacterStats,
     characterStatsProficiencies: Proficiency[],
+    characterSkillsProficiencies: Skill[],
     characterDefenses: string[],
     characterVulnerabilities: string[],
     characterImmunities: string[],
@@ -37,26 +38,25 @@ export type CharacterStats = {
     charisma: number;
 }
 
-export type CharacterSkills = {
-    acrobatics: number;
-    animalHandling: number;
-    arcana: number;
-    athletics: number;
-    deception: number;
-    history: number;
-    insights: number;
-    intimidation: number;
-    investigation: number;
-    medicine: number;
-    nature: number;
-    perception: number;
-    performance: number;
-    persuasion: number;
-    religion: number;
-    sleightOfHand: number;
-    stealth: number;
-    survival: number;
-}
+export type Skill =
+    'ACROBATICS'
+    | 'ANIMAL_HANDLING'
+    | 'ARCANA'
+    | 'ATHLETICS'
+    | 'DECEPTION'
+    | 'HISTORY'
+    | 'INSIGHTS'
+    | 'INTIMIDATION'
+    | 'INVESTIGATION'
+    | 'MEDICINE'
+    | 'NATURE'
+    | 'PERCEPTION'
+    | 'PERFORMANCE'
+    | 'PERSUASION'
+    | 'RELIGION'
+    | 'SLEIGHT_OF_HAND'
+    | 'STEALTH'
+    | 'SURVIVAL'
 
 export type Proficiency =
     | 'STRENGTH'

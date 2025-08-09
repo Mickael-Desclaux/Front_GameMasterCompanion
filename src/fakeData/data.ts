@@ -1,6 +1,6 @@
 import type {LastCampaign} from "@/types/campaigns.ts";
 import type {LastChapter} from "@/types/chapters.ts";
-import type {PlayerSummary} from "@/types/characters.ts";
+import type {Character, PlayerSummary} from "@/types/characters.ts";
 import type {SpellResume} from "@/types/spell.ts";
 import type {LastNote} from "@/types/notes.ts";
 
@@ -55,7 +55,7 @@ export const lastNPC = {
 export const character: Character = {
     characterIcon: "https://docs.material-tailwind.com/img/face-3.jpg",
     characterName: "Guy",
-    characterClass: "Mage",
+    characterClass: "Magicien",
     characterRace: "Haut-Elfe",
     characterLevel: 4,
     characterCurrentHealth: 14,
@@ -72,6 +72,7 @@ export const character: Character = {
         charisma: 18,
     },
     characterStatsProficiencies: ["CHARISMA", "WISDOM"],
+    characterSkillsProficiencies: ["ANIMAL_HANDLING", "ATHLETICS", "NATURE"],
     characterDefenses: ["feu", "glace"],
     characterVulnerabilities: ["électrique", "contondant"],
     characterImmunities: ["perçant", "tranchant"],

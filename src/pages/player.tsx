@@ -9,7 +9,7 @@ export default function PlayerPage() {
     const {playerId} = useParams();
 
     return (
-        <div className="p-8 text-sm">
+        <div className="p-8 text-xs">
             <h1 className="text-3xl font-bold text-center underline pb-4">{character.characterName}</h1>
             <h2 className="text-2xl font-bold text-center pb-4">{
                 character.characterClass} {character.characterRace} de Niveau {character.characterLevel}
@@ -20,9 +20,9 @@ export default function PlayerPage() {
                 {/*first column : stats + languages*/}
                 <div className="flex flex-col w-1/3">
                     {/*stats*/}
-                    <div className="flex flex-row gap-2">
+                    <div className="flex flex-row gap-2 items-center">
                         <div className="flex flex-col w-1/4">
-                            <ul className="flex flex-col gap-2 p-4">
+                            <ul className="flex flex-col gap-4 p-4 text-sm">
                                 <StatDisplay label={"FOR"} value={character.characterStats.strength}/>
                                 <StatDisplay label={"DEX"} value={character.characterStats.dexterity}/>
                                 <StatDisplay label={"CON"} value={character.characterStats.constitution}/>
@@ -32,7 +32,7 @@ export default function PlayerPage() {
                             </ul>
                         </div>
                         {/*inspirations + detailed stats*/}
-                        <div className="flex flex-col w-3/4 border-2 border-gray-200 rounded-lg p-4">
+                        <div className="flex flex-col w-3/4 p-4">
                             <ul className="flex flex-col gap-2">
                                 <li className="w-full border-2 rounded-sm">
                                     <div className="flex flex-row items-center gap-2 w-full p-4 font-bold">
@@ -55,11 +55,19 @@ export default function PlayerPage() {
                             </ul>
                         </div>
                     </div>
-                    <div className="flex flex-row w-full">
-                        Perception passive
-                    </div>
-                    <div className="flex flex-row w-full border-2 p-4 rounded-lg">
-                        Autre maîtrises et langues
+                    <div className="flex flex-col items-center gap-2">
+                        <div
+                            className="flex flex-row w-full border-2 border-gray-200 p-4 rounded-lg gap-4 items-center font-bold">
+                            <div className="px-1 py-0.5 bg-gray-200 w-8 text-center rounded-sm">
+                                {10 + Number(computeStatBonus(character.characterStats.wisdom))}
+                            </div>
+                            <div>
+                                Sagesse (Perception) Passive
+                            </div>
+                        </div>
+                        <div className="flex flex-row w-full border-2 p-4 rounded-lg">
+                            Autre maîtrises et langues
+                        </div>
                     </div>
                 </div>
             </div>

@@ -65,8 +65,16 @@ export default function PlayerPage() {
                                 Sagesse (Perception) Passive
                             </div>
                         </div>
-                        <div className="flex flex-row w-full border-2 p-4 rounded-lg">
-                            Autre maîtrises et langues
+                        <div className="flex flex-col w-full border-2 p-4 rounded-lg gap-2">
+                            <ul>
+                                <li className="pb-1 font-bold">Langues:</li>
+                                {character.characterLanguages.map((language: string, index: number) => (
+                                    <li key={index} className="uppercase">- {language}</li>
+                                ))}
+                            </ul>
+                            <div className="text-center font-bold">
+                                Autre maîtrises et langues
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -14,6 +14,7 @@ export type Character = {
     characterName: string,
     characterClass: CharacterClass,
     characterRace: string, //CharacterRace
+    characterSpeed: number,
     characterLevel: number,
     characterCurrentHealth: number,
     characterMaxHealth: number,

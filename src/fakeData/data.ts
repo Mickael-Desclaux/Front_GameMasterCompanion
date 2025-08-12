@@ -58,6 +58,7 @@ export const character: Character = {
     characterClass: "Magicien",
     characterRace: "Haut-Elfe",
     characterLevel: 4,
+    characterSpeed: 5,
     characterCurrentHealth: 14,
     characterMaxHealth: 20,
     characterInitiative: 2,

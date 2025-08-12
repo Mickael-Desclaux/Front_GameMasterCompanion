@@ -3,6 +3,7 @@ import {character} from "@/fakeData/data.ts";
 import StatDisplay from "@/components/statDisplay.tsx";
 import {addProficiencyBonus, checkProficiencyBonus, computeStatBonus} from "@/utils/character.ts";
 import type {CharacterStats, Proficiency, Skill} from "@/types/characters.ts";
+import * as React from "react";
 
 export default function PlayerPage() {
 
@@ -16,7 +17,7 @@ export default function PlayerPage() {
             </h2>
 
             {/*character sheet container*/}
-            <div className="w-full h-full border-2 border-gray-200 rounded-lg p-4">
+            <div className="w-full h-full flex flex-row gap-2 border-2 border-gray-200 rounded-lg p-4">
                 {/*first column : stats + languages*/}
                 <div className="flex flex-col w-1/3">
                     {/*stats*/}
@@ -78,9 +79,31 @@ export default function PlayerPage() {
                         </div>
                     </div>
                 </div>
+                {/*Second column: other stats, spells and stuff*/}
+                <div className="flex flex-col w-1/3">
+                    <div className="flex flex-row gap-2">
+                        <UtilStatDisplay label="CA" children={character.characterArmor}/>
+                        <UtilStatDisplay label="Initiative"
+                                         children={character.characterInitiative >= 0 ? `+${character.characterInitiative}` : `-${character.characterInitiative}`}/>
+                        <UtilStatDisplay label="Vitesse" children={`${character.characterSpeed}m`}/>
+                    </div>
+                </div>
             </div>
         </div>
     );
+}
+
+function UtilStatDisplay({children, label}: { children: React.ReactNode, label: string }) {
+    return (
+        <div className="flex flex-col gap-2 w-1/3 p-4 border border-gray-200 items-center rounded-lg">
+            <span>
+                {children}
+            </span>
+            <span className="font-bold">
+                {label}
+            </span>
+        </div>
+    )
 }
 
 type SkillsListProps = {

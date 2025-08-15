@@ -5,6 +5,7 @@ import {
 	addProficiencyBonus,
 	checkProficiencyBonus,
 	computeStatBonus,
+	isLowHealthCharacter,
 } from "@/utils/character.ts";
 import type { CharacterStats, Proficiency, Skill } from "@/types/characters.ts";
 import * as React from "react";
@@ -23,19 +24,29 @@ export default function PlayersPage() {
 				{/*character sheet container*/}
 				<div className="w-full h-full flex flex-row gap-6 p-2">
 					{campaignData.characters.map((character) => (
-						<div className="flex flex-col items-center border-2 border-gray-200 rounded-lg p-4">
+						<div className="flex flex-col items-center border-2 border-gray-200 rounded-lg p-4 gap-2">
 							<img
 								src={character.characterIcon}
 								alt={character.characterName}
 								className="rounded-lg w-36 h-36 mb-2"
 							/>
-							<h1 className="text-xl font-bold text-center underline pb-4">
+							<h1 className="text-xl font-bold text-center underline pb- text-balance">
 								{character.characterName}
 							</h1>
-							<h2 className="text-lg font-bold text-center pb-4">
+							<h2 className="text-lg underline text-center pb-2 text-balance">
 								{character.characterClass} {character.characterRace} de Niveau{" "}
 								{character.characterLevel}
 							</h2>
+							<div className="text-base mb-2">
+								{isLowHealthCharacter(
+									character.characterCurrentHealth,
+									character.characterMaxHealth
+								)
+									? "🔴"
+									: "🟢"}{" "}
+								{character.characterCurrentHealth} /{" "}
+								{character.characterMaxHealth} PV
+							</div>
 							<div className="flex flex-col w-full">
 								<div className="flex flex-row gap-2">
 									<UtilStatDisplay

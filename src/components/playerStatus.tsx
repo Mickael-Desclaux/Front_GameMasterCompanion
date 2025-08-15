@@ -1,3 +1,4 @@
+import { isLowHealthCharacter } from "@/utils/character";
 import { NavLink } from "react-router-dom";
 
 type PlayerStatusProps = {
@@ -12,13 +13,6 @@ type PlayerStatusProps = {
 };
 
 export default function PlayerStatus({ ...props }: PlayerStatusProps) {
-	function isLowHealthCharacter(
-		currentHealth: number,
-		maxHealth: number
-	): boolean {
-		return currentHealth <= maxHealth / 2;
-	}
-
 	return (
 		<div className="flex flex-col text-center lg:flex-row lg:text-left items-center p-2">
 			<div className="w-1/2">
@@ -41,10 +35,7 @@ export default function PlayerStatus({ ...props }: PlayerStatusProps) {
 					</li>
 					<li>Niveau {props.playerLevel}</li>
 					<li>
-						{isLowHealthCharacter(
-							props.playerCurrentHP,
-							props.playerMaxHP
-						)
+						{isLowHealthCharacter(props.playerCurrentHP, props.playerMaxHP)
 							? "🔴"
 							: "🟢"}{" "}
 						{props.playerCurrentHP} / {props.playerMaxHP} PV
